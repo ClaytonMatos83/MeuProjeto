@@ -1,21 +1,55 @@
 {
     "env": {
-        "browser": true,
-        "es2021": true
+      "browser": true,
+      "es2021": true
+    },
+    "globals": {
+      "_DEV_": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "standard-with-typescript"
-    ],
-    "overrides": [
+      "plugin:react/recommended",
+      "standard",
+      "plugin:prettier/recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module"
     },
     "plugins": [
-        "react"
+      "react",
+      "eslint-plugin-import-helpers"
     ],
     "rules": {
+      "import-helpers/order-imports": [
+        "error",
+        {
+          "newlinesBetween": "always",
+          "groups": [
+            "module",
+            [
+              "/^components\//",
+              "/^store\//",
+              "/^services\//",
+              "/^assets\//",
+              "/^utils\//",
+              "/^styles\//",
+              "/^hooks\//",
+              "/^screens\//"
+            ],
+            [
+              "parent",
+              "sibling",
+              "index"
+            ]
+          ],
+          "alphabetize": {
+            "order": "asc",
+            "ignoreCase": true
+          }
+        }
+      ]
     }
-}
+  }
